@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>С днём рождения, брат!</title>
+    <title>С днём рождения, брат! 🎂</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 50%, #ffd3b4 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             font-family: 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI', sans-serif;
             min-height: 100vh;
             display: flex;
@@ -23,36 +23,126 @@
             margin: 0;
             touch-action: manipulation;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Анимированный фон */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Плавающие шарики */
+        .floating-balls {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .ball {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: floatBall linear infinite;
+        }
+
+        @keyframes floatBall {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.15;
+            }
+            90% {
+                opacity: 0.15;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg) scale(1);
+                opacity: 0;
+            }
         }
 
         .card {
             max-width: 480px;
             width: 100%;
-            background: rgba(255, 248, 240, 0.92);
-            backdrop-filter: blur(10px);
-            border-radius: 40px 15px 40px 15px;
-            box-shadow: 0 15px 40px rgba(120, 80, 60, 0.2);
-            padding: 25px 18px 30px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 50px 20px 50px 20px;
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+            padding: 30px 22px 35px;
             text-align: center;
-            border: 3px solid rgba(255, 255, 255, 0.7);
-            transition: 0.3s;
             position: relative;
             z-index: 1;
+            animation: cardAppear 0.6s ease;
+        }
+
+        @keyframes cardAppear {
+            0% {
+                transform: scale(0.8) translateY(30px);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Блестящая рамка */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 52px 22px 52px 22px;
+            background: linear-gradient(45deg, #f093fb, #f5576c, #4facfe, #43e97b);
+            background-size: 400% 400%;
+            z-index: -1;
+            animation: gradientBorder 3s ease infinite;
+        }
+
+        @keyframes gradientBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         h1 {
-            font-size: 2.4rem;
-            color: #5a3e2b;
-            text-shadow: 2px 2px 0 #f7dc6f, 0 0 20px rgba(247, 220, 111, 0.2);
-            letter-spacing: 0.5px;
-            word-break: break-word;
-            font-weight: 900;
+            font-size: 2.6rem;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+            letter-spacing: 1px;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: transform 0.3s;
             user-select: none;
             padding: 5px 0;
             position: relative;
             z-index: 1;
+        }
+
+        h1:hover {
+            transform: scale(1.05);
         }
 
         h1:active {
@@ -60,21 +150,26 @@
         }
 
         .subhead {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: bold;
             color: #6b4c3b;
-            background: #fae5d3;
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
             display: inline-block;
-            padding: 6px 20px;
-            border-radius: 40px;
-            margin: 5px 0 8px;
-            box-shadow: 0 3px 0 #d4a373;
-            border: 2px solid #f0d5b0;
+            padding: 8px 28px;
+            border-radius: 50px;
+            margin: 8px 0 12px;
+            box-shadow: 0 4px 15px rgba(253, 203, 110, 0.4);
+            border: none;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.3s;
             user-select: none;
             position: relative;
             z-index: 1;
+        }
+
+        .subhead:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(253, 203, 110, 0.5);
         }
 
         .subhead:active {
@@ -82,15 +177,26 @@
         }
 
         .emoji-big {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin: 3px 0 8px;
-            filter: drop-shadow(0 6px 10px rgba(0,0,0,0.06));
+            font-size: 4rem;
+            line-height: 1.3;
+            margin: 5px 0 10px;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.3s;
             user-select: none;
             position: relative;
             z-index: 1;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .emoji-big span {
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .emoji-big span:hover {
+            transform: scale(1.2) rotate(-10deg);
         }
 
         .emoji-big:active {
@@ -98,20 +204,25 @@
         }
 
         .message {
-            font-size: 1.4rem;
-            background: #fef9f0;
-            padding: 16px 18px;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #fef9f0, #fdf6e8);
+            padding: 20px 22px;
             border-radius: 40px 12px 40px 12px;
-            border: 3px solid #f0d5b0;
+            border: 3px solid rgba(253, 203, 110, 0.3);
             color: #4a3525;
-            margin: 10px 0 15px;
-            box-shadow: inset 0 2px 8px rgba(180, 130, 90, 0.06);
-            line-height: 1.4;
+            margin: 12px 0 18px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            line-height: 1.5;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.3s;
             user-select: none;
             position: relative;
             z-index: 1;
+        }
+
+        .message:hover {
+            transform: scale(1.02);
+            border-color: rgba(253, 203, 110, 0.6);
         }
 
         .message:active {
@@ -119,100 +230,128 @@
         }
 
         .message span {
-            background: #f9caa7;
-            padding: 0 12px;
+            background: linear-gradient(135deg, #f9caa7, #f8a87a);
+            padding: 0 16px;
             border-radius: 30px;
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             display: inline-block;
             color: #5a2d1a;
-            box-shadow: 0 3px 0 #c4956a;
+            box-shadow: 0 4px 10px rgba(248, 168, 122, 0.3);
         }
 
         /* ===== КЛИКЕР ===== */
         .clicker-section {
-            background: linear-gradient(135deg, #f8e8d0, #f5e0c0);
-            border-radius: 30px 10px 30px 10px;
-            padding: 15px 12px;
-            margin: 12px 0 15px;
-            border: 3px solid #eddccb;
+            background: linear-gradient(135deg, #f8f0e3, #f5e8d5);
+            border-radius: 40px 15px 40px 15px;
+            padding: 18px 15px 20px;
+            margin: 15px 0 18px;
+            border: 3px solid rgba(253, 203, 110, 0.3);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
             position: relative;
             z-index: 1;
+            overflow: hidden;
+        }
+
+        .clicker-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(253, 203, 110, 0.05) 0%, transparent 70%);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30%, 30%); }
         }
 
         .clicker-title {
             font-size: 1.2rem;
             font-weight: bold;
             color: #5a4030;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
         }
 
         .clicker-display {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 18px;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
 
         .clicker-button {
             background: linear-gradient(145deg, #ffd93d, #f6b93b);
             border: none;
             border-radius: 60px;
-            padding: 16px 30px;
+            padding: 18px 35px;
             font-size: 1.8rem;
             font-weight: bold;
             color: #2d1f14;
-            box-shadow: 0 6px 0 #d4a017, 0 8px 20px rgba(246, 185, 59, 0.3);
+            box-shadow: 0 8px 0 #d4a017, 0 12px 40px rgba(246, 185, 59, 0.4);
             cursor: pointer;
-            transition: all 0.08s ease;
+            transition: all 0.1s ease;
             touch-action: manipulation;
             user-select: none;
-            min-width: 130px;
+            min-width: 140px;
             position: relative;
             z-index: 2;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
+        }
+
+        .clicker-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 0 #d4a017, 0 16px 50px rgba(246, 185, 59, 0.5);
         }
 
         .clicker-button:active {
-            transform: translateY(4px);
+            transform: translateY(6px);
             box-shadow: 0 2px 0 #d4a017;
         }
 
         .clicker-button .icon {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             line-height: 1;
         }
 
         .clicker-counter {
-            font-size: 2.4rem;
+            font-size: 2.6rem;
             font-weight: bold;
             color: #2d1f14;
             background: white;
-            padding: 8px 28px;
+            padding: 8px 30px;
             border-radius: 50px;
-            box-shadow: inset 0 2px 8px rgba(0,0,0,0.06);
-            border: 2px solid #dccfc4;
-            min-width: 80px;
-            transition: transform 0.15s;
+            box-shadow: inset 0 2px 15px rgba(0,0,0,0.05), 0 4px 20px rgba(0,0,0,0.04);
+            border: 3px solid #dccfc4;
+            min-width: 90px;
+            transition: all 0.15s;
         }
 
         .clicker-counter.pop {
-            animation: pop 0.2s ease;
+            animation: popCounter 0.3s ease;
         }
 
-        @keyframes pop {
+        @keyframes popCounter {
             0% { transform: scale(1); }
-            50% { transform: scale(1.3); }
+            30% { transform: scale(1.4); color: #f5576c; }
+            60% { transform: scale(1.2); }
             100% { transform: scale(1); }
         }
 
         .btn-group {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            gap: 10px;
             margin: 15px 0 12px;
             position: relative;
             z-index: 1;
@@ -221,17 +360,17 @@
         .btn {
             border: none;
             border-radius: 50px;
-            padding: 14px 12px;
+            padding: 16px 14px;
             font-size: 1.2rem;
             font-weight: bold;
             color: #3d2b1a;
-            box-shadow: 0 4px 0 #c9b09b, 0 4px 12px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 0 #c9b09b, 0 6px 20px rgba(0,0,0,0.06);
             cursor: pointer;
-            transition: all 0.08s ease;
+            transition: all 0.1s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 8px;
             border: 2px solid rgba(255,255,255,0.5);
             background: #f5e6d3;
             user-select: none;
@@ -241,50 +380,55 @@
             z-index: 1;
         }
 
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #c9b09b, 0 8px 25px rgba(0,0,0,0.1);
+        }
+
         .btn:active {
             transform: translateY(3px);
             box-shadow: 0 2px 0 #b89f8a;
         }
 
         .btn-green {
-            background: #c7e9c0;
-            box-shadow: 0 4px 0 #9dbd94;
+            background: linear-gradient(135deg, #a8e6cf, #7bc6a4);
+            box-shadow: 0 4px 0 #5a9b7a;
         }
         .btn-green:active {
-            box-shadow: 0 2px 0 #9dbd94;
+            box-shadow: 0 2px 0 #5a9b7a;
         }
 
         .btn-blue {
-            background: #c5dff8;
-            box-shadow: 0 4px 0 #9bb5d4;
+            background: linear-gradient(135deg, #a8d8ea, #7cb8d4);
+            box-shadow: 0 4px 0 #4a8fa8;
         }
         .btn-blue:active {
-            box-shadow: 0 2px 0 #9bb5d4;
+            box-shadow: 0 2px 0 #4a8fa8;
         }
 
         .btn-orange {
-            background: #fae1b0;
-            box-shadow: 0 4px 0 #d4b588;
+            background: linear-gradient(135deg, #fae1b0, #f5c87a);
+            box-shadow: 0 4px 0 #c9a35a;
         }
         .btn-orange:active {
-            box-shadow: 0 2px 0 #d4b588;
+            box-shadow: 0 2px 0 #c9a35a;
         }
 
         .btn-pink {
-            background: #f8d5d5;
-            box-shadow: 0 4px 0 #d4afaf;
+            background: linear-gradient(135deg, #f8d5d5, #f0b8b8);
+            box-shadow: 0 4px 0 #c98a8a;
         }
         .btn-pink:active {
-            box-shadow: 0 2px 0 #d4afaf;
+            box-shadow: 0 2px 0 #c98a8a;
         }
 
         .game-area {
-            background: #fcf6ed;
-            border-radius: 40px 12px 40px 12px;
-            padding: 16px 12px;
+            background: linear-gradient(135deg, #fcf8f0, #f8f0e5);
+            border-radius: 40px 15px 40px 15px;
+            padding: 18px 14px;
             margin: 12px 0 10px;
-            border: 3px solid #eddccb;
-            box-shadow: inset 0 2px 10px rgba(160, 120, 90, 0.04);
+            border: 3px solid rgba(253, 203, 110, 0.2);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
             position: relative;
             z-index: 1;
         }
@@ -292,57 +436,85 @@
         .game-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin: 8px 0;
+            gap: 12px;
+            margin: 5px 0;
         }
 
         .animal-card {
-            background: #fffcf5;
-            border-radius: 30px 8px 30px 8px;
-            padding: 12px 6px;
-            font-size: 2.4rem;
-            box-shadow: 0 4px 0 #dccfc4, 0 6px 15px rgba(0,0,0,0.03);
-            border: 2px solid #ede0d2;
+            background: white;
+            border-radius: 35px 10px 35px 10px;
+            padding: 14px 8px;
+            font-size: 2.8rem;
+            box-shadow: 0 4px 0 #dccfc4, 0 8px 25px rgba(0,0,0,0.04);
+            border: 3px solid #ede0d2;
             cursor: pointer;
-            transition: all 0.1s ease;
+            transition: all 0.15s ease;
             user-select: none;
             touch-action: manipulation;
             aspect-ratio: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 65px;
+            min-height: 70px;
             position: relative;
             z-index: 1;
         }
 
+        .animal-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 0 #dccfc4, 0 12px 30px rgba(0,0,0,0.08);
+        }
+
         .animal-card:active {
-            transform: scale(0.92);
+            transform: scale(0.92) translateY(2px);
             box-shadow: 0 2px 0 #cbbdb0;
         }
 
         .animal-card.clicked {
-            background: #fae5c3;
+            background: linear-gradient(135deg, #fae5c3, #f5d5a8);
             border-color: #dbb58b;
-            box-shadow: 0 0 0 3px #eed3b0, 0 3px 0 #c9af8d;
-            transform: scale(1.02);
+            box-shadow: 0 0 0 4px #eed3b0, 0 3px 0 #c9af8d;
+            transform: scale(1.05);
+        }
+
+        /* Блеск на карточках животных */
+        .animal-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .animal-card:hover::after {
+            opacity: 1;
         }
 
         .footer {
-            margin-top: 18px;
-            font-size: 1.3rem;
+            margin-top: 20px;
+            font-size: 1.4rem;
             color: #5a4030;
-            background: #f5e6d3;
-            padding: 12px 16px;
-            border-radius: 40px;
-            border: 2px solid #eddccb;
-            box-shadow: 0 3px 0 #d4bfae;
+            background: linear-gradient(135deg, #f5e6d3, #f0dcc8);
+            padding: 14px 20px;
+            border-radius: 50px;
+            border: 3px solid rgba(253, 203, 110, 0.2);
+            box-shadow: 0 4px 0 #d4bfae;
             font-weight: 500;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.3s;
             user-select: none;
             position: relative;
             z-index: 1;
+        }
+
+        .footer:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 0 #d4bfae;
         }
 
         .footer:active {
@@ -363,72 +535,77 @@
 
         .confetti-piece {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            top: -10px;
+            width: 12px;
+            height: 12px;
+            top: -20px;
             animation: confettiFall linear forwards;
+            transform-origin: center;
         }
 
         @keyframes confettiFall {
             0% {
-                transform: translateY(0) rotate(0deg) scale(1);
+                transform: translateY(0) rotate(0deg) scale(1) skew(0deg);
                 opacity: 1;
             }
             100% {
-                transform: translateY(110vh) rotate(720deg) scale(0.5);
+                transform: translateY(110vh) rotate(720deg) scale(0.3) skew(20deg);
                 opacity: 0;
             }
         }
 
         @media (max-width: 400px) {
             .card {
-                padding: 16px 12px 20px;
+                padding: 20px 14px 25px;
             }
             
             h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
             .subhead {
-                font-size: 1.0rem;
-                padding: 4px 14px;
+                font-size: 1.1rem;
+                padding: 6px 18px;
             }
             
             .emoji-big {
-                font-size: 2.8rem;
+                font-size: 3rem;
             }
             
             .message {
-                font-size: 1.1rem;
-                padding: 12px 14px;
+                font-size: 1.2rem;
+                padding: 14px 16px;
             }
             
             .message span {
-                font-size: 1.8rem;
-                padding: 0 8px;
+                font-size: 2rem;
+                padding: 0 10px;
             }
             
             .btn {
-                font-size: 1.0rem;
+                font-size: 1rem;
                 padding: 10px 8px;
                 min-height: 48px;
             }
             
             .animal-card {
-                font-size: 1.8rem;
+                font-size: 2rem;
                 padding: 8px 4px;
                 min-height: 55px;
             }
             
             .footer {
-                font-size: 1.0rem;
-                padding: 10px 12px;
+                font-size: 1.1rem;
+                padding: 10px 14px;
             }
 
             .clicker-button {
-                font-size: 1.5rem;
-                padding: 12px 18px;
+                font-size: 1.4rem;
+                padding: 12px 20px;
                 min-width: 100px;
+            }
+
+            .clicker-button .icon {
+                font-size: 1.8rem;
             }
 
             .clicker-counter {
@@ -448,24 +625,28 @@
             }
             
             .animal-card {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
                 min-height: 45px;
             }
             
             .btn-group {
-                gap: 5px;
+                gap: 6px;
             }
             
             .btn {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
                 padding: 8px 6px;
                 min-height: 42px;
             }
 
             .clicker-button {
                 font-size: 1.2rem;
-                padding: 10px 14px;
+                padding: 10px 16px;
                 min-width: 80px;
+            }
+
+            .clicker-button .icon {
+                font-size: 1.5rem;
             }
 
             .clicker-counter {
@@ -478,58 +659,63 @@
         @media (min-width: 768px) {
             .card {
                 max-width: 550px;
-                padding: 35px 30px 40px;
+                padding: 40px 35px 45px;
             }
             
             h1 {
-                font-size: 3.2rem;
+                font-size: 3.4rem;
             }
             
             .subhead {
                 font-size: 1.6rem;
-                padding: 8px 28px;
+                padding: 10px 32px;
             }
             
             .emoji-big {
-                font-size: 4.5rem;
+                font-size: 5rem;
             }
             
             .message {
                 font-size: 1.8rem;
-                padding: 20px 25px;
+                padding: 22px 28px;
             }
             
             .message span {
                 font-size: 2.8rem;
-                padding: 0 18px;
+                padding: 0 20px;
             }
             
             .btn {
                 font-size: 1.4rem;
-                padding: 14px 20px;
-                min-height: 60px;
+                padding: 16px 22px;
+                min-height: 64px;
             }
             
             .animal-card {
-                font-size: 3rem;
-                padding: 14px 10px;
-                min-height: 80px;
+                font-size: 3.4rem;
+                padding: 16px 12px;
+                min-height: 90px;
             }
             
             .footer {
                 font-size: 1.6rem;
-                padding: 14px 20px;
+                padding: 16px 24px;
             }
 
             .clicker-button {
                 font-size: 2.2rem;
-                padding: 18px 35px;
-                min-width: 160px;
+                padding: 20px 40px;
+                min-width: 180px;
+            }
+
+            .clicker-button .icon {
+                font-size: 3rem;
             }
 
             .clicker-counter {
-                font-size: 3rem;
-                padding: 10px 35px;
+                font-size: 3.2rem;
+                padding: 10px 40px;
+                min-width: 100px;
             }
 
             .clicker-title {
@@ -540,13 +726,20 @@
 </head>
 <body>
 
+<!-- Плавающие шарики -->
+<div class="floating-balls" id="floatingBalls"></div>
+
 <!-- Контейнер для конфетти -->
 <div class="confetti-container" id="confettiContainer"></div>
 
 <div class="card" id="mainCard">
     <h1 id="titleBirthday">🎂 С ДНЁМ РОЖДЕНИЯ! 🎂</h1>
     <div class="subhead" id="subheadBrother">⭐ Моему любимому брату! ⭐</div>
-    <div class="emoji-big" id="emojiBig">🎈🎁🌟</div>
+    <div class="emoji-big" id="emojiBig">
+        <span>🎈</span>
+        <span>🎁</span>
+        <span>🌟</span>
+    </div>
 
     <div class="message" id="messageAge">
         Тебе уже <span>5</span> лет! <br>
@@ -555,7 +748,7 @@
 
     <!-- ===== КЛИКЕР ===== -->
     <div class="clicker-section">
-        <div class="clicker-title">💰 Нажимай на монетку!</div>
+        <div class="clicker-title">💎 Нажимай на монетку!</div>
         <div class="clicker-display">
             <button class="clicker-button" id="clickerButton">
                 <span class="icon">💎</span> ЖМИ!
@@ -592,26 +785,53 @@
 
 <script>
     (function() {
+        // ====== ПЛАВАЮЩИЕ ШАРИКИ ======
+        function createFloatingBalls() {
+            const container = document.getElementById('floatingBalls');
+            const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#54a0ff', '#5f27cd', '#1dd1a1', '#f368e0'];
+            
+            for (let i = 0; i < 15; i++) {
+                const ball = document.createElement('div');
+                ball.className = 'ball';
+                const size = Math.random() * 60 + 30;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const left = Math.random() * 100;
+                const duration = Math.random() * 20 + 15;
+                const delay = Math.random() * 20;
+                
+                ball.style.cssText = `
+                    left: ${left}%;
+                    width: ${size}px;
+                    height: ${size}px;
+                    background: ${color};
+                    animation-duration: ${duration}s;
+                    animation-delay: ${delay}s;
+                `;
+                container.appendChild(ball);
+            }
+        }
+        createFloatingBalls();
+
         // ====== КОНФЕТТИ ======
         const confettiContainer = document.getElementById('confettiContainer');
         const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#54a0ff', '#5f27cd', '#1dd1a1', '#f368e0', '#ff9f43', '#00d2d3'];
 
-        function createConfetti(count = 80) {
+        function createConfetti(count = 100) {
             for (let i = 0; i < count; i++) {
                 const piece = document.createElement('div');
                 piece.className = 'confetti-piece';
-                const size = Math.random() * 10 + 6;
+                const size = Math.random() * 12 + 6;
                 const color = colors[Math.floor(Math.random() * colors.length)];
                 const left = Math.random() * 100;
-                const duration = Math.random() * 2 + 2;
+                const duration = Math.random() * 2.5 + 2;
                 const delay = Math.random() * 1.5;
-                const shapes = ['50%', '0'];
+                const shapes = ['50%', '0', '3px'];
                 const borderRadius = shapes[Math.floor(Math.random() * shapes.length)];
                 
                 piece.style.cssText = `
                     left: ${left}%;
                     width: ${size}px;
-                    height: ${size * 0.6}px;
+                    height: ${size * (Math.random() * 0.8 + 0.4)}px;
                     background: ${color};
                     border-radius: ${borderRadius};
                     animation-duration: ${duration}s;
@@ -622,7 +842,7 @@
             
             setTimeout(() => {
                 confettiContainer.innerHTML = '';
-            }, 4000);
+            }, 4500);
         }
 
         // ====== ФУНКЦИЯ ДЛЯ ВОСПРОИЗВЕДЕНИЯ ЗВУКА ======
@@ -670,7 +890,7 @@
             clickerCounter.classList.add('pop');
             
             playSound(audioFiles['coin']);
-            createConfetti(60);
+            createConfetti(70);
             
             this.style.transform = 'scale(0.9)';
             setTimeout(() => {
@@ -682,7 +902,7 @@
 
         document.getElementById('titleBirthday').addEventListener('click', function() {
             playSound(audioFiles['Happy birthday']);
-            createConfetti(50);
+            createConfetti(60);
         });
 
         document.getElementById('subheadBrother').addEventListener('click', function() {
@@ -691,7 +911,7 @@
 
         document.getElementById('emojiBig').addEventListener('click', function() {
             playSound(audioFiles['Happy birthday']);
-            createConfetti(40);
+            createConfetti(50);
         });
 
         document.getElementById('messageAge').addEventListener('click', function() {
@@ -742,7 +962,7 @@
                     }
                 }
 
-                this.style.transform = 'scale(1.1)';
+                this.style.transform = 'scale(1.15)';
                 setTimeout(() => { this.style.transform = ''; }, 200);
             });
         });
@@ -752,8 +972,8 @@
         });
 
         window.addEventListener('load', function() {
-            console.log('🎉 Страница загружена!');
-            console.log('💰 Нажми на монетку!');
+            console.log('🎉 С ДНЁМ РОЖДЕНИЯ!');
+            console.log('💎 Нажми на монетку!');
         });
 
     })();
