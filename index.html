@@ -4,655 +4,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🎂 С ДНЁМ РОЖДЕНИЯ! 🎂</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Lobster&display=swap" rel="stylesheet">
     <style>
-        /* === ОСНОВНЫЕ СТИЛИ === */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Стили чтобы было красиво (можно оставить свои) */
         body {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: 'Lobster', cursive;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            position: relative;
-            overflow-x: hidden;
-            cursor: pointer;
-        }
-
-        /* === КОНТЕЙНЕР === */
-        .container {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            border-radius: 50px;
-            padding: 40px 50px;
-            max-width: 800px;
-            width: 100%;
+            font-family: Arial, sans-serif;
             text-align: center;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 10;
-            animation: floatContainer 3s ease-in-out infinite;
-        }
-
-        @keyframes floatContainer {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* === ЗАГОЛОВКИ === */
-        h1 {
-            font-family: 'Pacifico', cursive;
-            font-size: 3.5em;
-            color: #FFD700;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 4px 8px rgba(0,0,0,0.3);
-            margin-bottom: 10px;
-            animation: pulseText 2s ease-in-out infinite;
-        }
-
-        @keyframes pulseText {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .subtitle {
-            font-size: 2em;
-            color: #FFF;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            margin-bottom: 20px;
-        }
-
-        .age {
-            font-size: 4em;
-            color: #FF6B6B;
-            background: rgba(255, 255, 255, 0.2);
-            display: inline-block;
-            padding: 10px 30px;
-            border-radius: 50px;
-            margin: 15px 0;
-            animation: rainbowText 3s linear infinite;
-        }
-
-        @keyframes rainbowText {
-            0% { color: #ff6b6b; }
-            25% { color: #ffd93d; }
-            50% { color: #6bcb77; }
-            75% { color: #4d96ff; }
-            100% { color: #ff6b6b; }
-        }
-
-        .message {
-            font-size: 1.5em;
-            color: #FFF;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            margin: 20px 0;
-            background: rgba(255, 255, 255, 0.1);
+            background-color: #fff0f5;
             padding: 20px;
-            border-radius: 20px;
-            border-left: 4px solid #FFD700;
         }
-
-        /* === МОНЕТКА === */
-        .coin-section {
-            margin: 30px 0;
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-
-        .coin {
-            font-size: 5em;
-            cursor: pointer;
-            display: inline-block;
-            transition: transform 0.3s;
-            animation: spinCoin 4s linear infinite;
-            filter: drop-shadow(0 4px 15px rgba(255, 215, 0, 0.6));
-        }
-
-        @keyframes spinCoin {
-            0% { transform: rotateY(0deg) scale(1); }
-            25% { transform: rotateY(90deg) scale(1.1); }
-            50% { transform: rotateY(180deg) scale(1); }
-            75% { transform: rotateY(270deg) scale(1.1); }
-            100% { transform: rotateY(360deg) scale(1); }
-        }
-
-        .coin:active {
-            transform: scale(0.8);
-        }
-
-        .coin-count {
-            font-size: 3em;
-            color: #FFD700;
-            font-weight: bold;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-            display: block;
-            margin-top: 10px;
-            transition: transform 0.3s;
-        }
-
-        .coin-count.pop {
-            animation: popNumber 0.5s ease;
-        }
-
-        @keyframes popNumber {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.5); color: #FF6B6B; }
-            100% { transform: scale(1); }
-        }
-
-        /* === ЖИВОТНЫЕ === */
-        .animals {
+        .emoji-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            margin: 30px 0 20px;
-        }
-
-        .animal {
-            font-size: 3em;
+            gap: 20px;
+            font-size: 3rem;
+            margin: 20px 0;
             cursor: pointer;
-            transition: all 0.3s;
-            filter: grayscale(0.2);
-            position: relative;
         }
-
-        .animal:hover {
-            transform: scale(1.3) rotate(10deg);
-            filter: grayscale(0);
+        .emoji-item {
+            transition: transform 0.2s;
+            padding: 10px;
+            border-radius: 20px;
+            background: #f8f8ff;
+            min-width: 80px;
         }
-
-        .animal:active {
+        .emoji-item:active {
             transform: scale(0.8);
         }
-
-        .animal-tooltip {
-            position: absolute;
-            bottom: 120%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: #FFF;
-            padding: 8px 15px;
-            border-radius: 10px;
-            font-size: 0.3em;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
-            font-family: 'Lobster', cursive;
-        }
-
-        .animal:hover .animal-tooltip {
-            opacity: 1;
-        }
-
-        /* === КНОПКА СЮРПРИЗА === */
-        .surprise-btn {
-            background: linear-gradient(45deg, #FF6B6B, #FFD93D);
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.8em;
-            font-family: 'Pacifico', cursive;
-            border-radius: 50px;
-            color: #FFF;
-            cursor: pointer;
-            margin: 20px 0;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .surprise-btn:hover {
-            transform: scale(1.05) rotate(-2deg);
-            box-shadow: 0 6px 25px rgba(255, 107, 107, 0.6);
-        }
-
-        .surprise-btn:active {
-            transform: scale(0.95);
-        }
-
-        .surprise-message {
-            font-size: 2em;
-            color: #FFF;
-            margin-top: 15px;
+        .coin {
+            font-size: 4rem;
+            background: gold;
+            border-radius: 50%;
             padding: 15px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            display: none;
-            animation: fadeInUp 0.5s ease;
-        }
-
-        .surprise-message.show {
-            display: block;
-        }
-
-        @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* === АУДИО КОНТРОЛ === */
-        .audio-control {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            color: #FFF;
-            font-size: 2em;
-            padding: 10px 15px;
-            border-radius: 50px;
+            display: inline-block;
+            margin: 10px;
             cursor: pointer;
-            transition: all 0.3s;
-            font-family: 'Lobster', cursive;
+            transition: 0.3s;
         }
-
-        .audio-control:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
+        .coin:active {
+            transform: scale(0.7);
         }
-
-        /* === КОНФЕТТИ === */
-        .confetti-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 999;
-            overflow: hidden;
+        h1 {
+            color: #ff6b6b;
         }
-
-        .confetti {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            border-radius: 2px;
-            animation: confettiFall linear forwards;
-        }
-
-        @keyframes confettiFall {
-            0% { 
-                transform: translateY(-100px) rotate(0deg) scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(110vh) rotate(720deg) scale(0.5);
-                opacity: 0;
-            }
-        }
-
-        /* === ВСПЫШКИ ПРИ КЛИКЕ === */
-        .burst-particle {
-            position: fixed;
-            pointer-events: none;
-            z-index: 1000;
-            font-size: 2em;
-            animation: burstParticle 1s ease-out forwards;
-        }
-
-        @keyframes burstParticle {
-            0% {
-                transform: translate(0, 0) scale(1) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(var(--tx), var(--ty)) scale(0) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* === АДАПТИВНОСТЬ === */
-        @media (max-width: 600px) {
-            .container {
-                padding: 25px 20px;
-            }
-            h1 {
-                font-size: 2.5em;
-            }
-            .subtitle {
-                font-size: 1.5em;
-            }
-            .age {
-                font-size: 3em;
-            }
-            .coin {
-                font-size: 4em;
-            }
-            .animal {
-                font-size: 2.5em;
-            }
-            .message {
-                font-size: 1.2em;
-                padding: 15px;
-            }
-            .surprise-btn {
-                font-size: 1.3em;
-                padding: 12px 25px;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .animals {
-                gap: 8px;
-            }
-            .animal {
-                font-size: 2em;
-            }
-            h1 {
-                font-size: 2em;
-            }
-            .coin {
-                font-size: 3em;
-            }
+        .subtitle {
+            font-size: 1.5rem;
+            color: #4ecdc4;
         }
     </style>
 </head>
 <body>
-
-    <!-- АУДИО КНОПКА -->
-    <button class="audio-control" id="audioBtn">🔊 Вкл</button>
-
-    <!-- КОНФЕТТИ КОНТЕЙНЕР -->
-    <div class="confetti-container" id="confettiContainer"></div>
-
-    <!-- ОСНОВНОЙ КОНТЕЙНЕР -->
     <div class="container">
         <h1>🎂 С ДНЁМ РОЖДЕНИЯ! 🎂</h1>
-        <div class="subtitle">⭐ Моему любимому брату! ⭐</div>
-        <div style="font-size: 3em; margin: 10px 0;">🎈🎁🌟</div>
+        <p class="subtitle">⭐ Моему любимому брату! ⭐</p>
+        <p>🎈🎁🌟</p>
+        <p><strong>Тебе уже 5 лет!</strong></p>
+        <p>Ты самый сильный и умный! 🦸♂️</p>
         
-        <div class="age">Тебе уже 5 лет! 🎉</div>
+        <!-- Монетка -->
+        <div class="coin" data-sound="coin">💰 <span id="coinCount">0</span></div>
+
+        <!-- Все эмодзи -->
+        <div class="emoji-grid" id="emojiContainer">
+            <div class="emoji-item" data-sound="dog">🐶</div>
+            <div class="emoji-item" data-sound="cat">🐱</div>
+            <div class="emoji-item" data-sound="panda">🐼</div>
+            <div class="emoji-item" data-sound="koala">🐨</div>
+            <div class="emoji-item" data-sound="fox">🦊</div>
+            <div class="emoji-item" data-sound="frog">🐸</div>
+            <div class="emoji-item" data-sound="penguin">🐧</div>
+            <div class="emoji-item" data-sound="unicorn">🦄</div>
+        </div>
         
-        <div class="message">
-            Ты — наше солнышко! ☀️<br>
-            Мы тебя очень любим и хотим, чтобы каждый твой день<br>
-            был таким же ярким, как эти шарики! 🎈
-        </div>
-
-        <!-- МОНЕТКА -->
-        <div class="coin-section">
-            <div class="coin" id="coin">💰</div>
-            <span class="coin-count" id="coinCount">0</span>
-        </div>
-
-        <!-- ЖИВОТНЫЕ -->
-        <div class="animals">
-            <div class="animal" data-sound="Гав-гав! 🐕">
-                🐶
-                <span class="animal-tooltip">Гав-гав! 🐕</span>
-            </div>
-            <div class="animal" data-sound="Мяу! 🐱">
-                🐱
-                <span class="animal-tooltip">Мяу! 🐱</span>
-            </div>
-            <div class="animal" data-sound="Топ-топ! 🐼">
-                🐼
-                <span class="animal-tooltip">Топ-топ! 🐼</span>
-            </div>
-            <div class="animal" data-sound="Привет! 🐨">
-                🐨
-                <span class="animal-tooltip">Привет! 🐨</span>
-            </div>
-            <div class="animal" data-sound="Хи-хи! 🦊">
-                🦊
-                <span class="animal-tooltip">Хи-хи! 🦊</span>
-            </div>
-            <div class="animal" data-sound="Ква-ква! 🐸">
-                🐸
-                <span class="animal-tooltip">Ква-ква! 🐸</span>
-            </div>
-            <div class="animal" data-sound="Пинг-вин! 🐧">
-                🐧
-                <span class="animal-tooltip">Пинг-вин! 🐧</span>
-            </div>
-            <div class="animal" data-sound="И-го-го! 🦄">
-                🦄
-                <span class="animal-tooltip">И-го-го! 🦄</span>
-            </div>
-        </div>
-
-        <!-- СЮРПРИЗ -->
-        <button class="surprise-btn" id="surpriseBtn">🎁 СЮРПРИЗ!</button>
-        <div class="surprise-message" id="surpriseMessage">
-            🌟 Ты самый лучший брат на свете! 🌟<br>
-            🎉 С днём рождения! Желаем тебе счастья, здоровья и много-много игрушек! 🎁
-        </div>
+        <p style="margin-top: 30px; font-size: 0.8rem; color: #aaa;">Нажми на любой эмодзи или монетку — услышишь звук!</p>
     </div>
 
     <script>
-        // === ЗВУКИ (используем Web Audio API для генерации простых звуков) ===
-        class SoundGenerator {
-            constructor() {
-                this.audioCtx = null;
+        // 📢 Список звуков: ключ (data-sound) -> имя файла в папке audio
+        const soundMap = {
+            'coin': 'coin.mp3',       // Звук монетки
+            'dog': 'dog.mp3',         // Собака
+            'cat': 'cat.mp3',         // Кошка
+            'panda': 'panda.mp3',     // Панда
+            'koala': 'koala.mp3',     // Коала
+            'fox': 'fox.mp3',         // Лиса
+            'frog': 'frog.mp3',       // Лягушка
+            'penguin': 'penguin.mp3', // Пингвин
+            'unicorn': 'unicorn.mp3'  // Единорог
+        };
+
+        // Функция для проигрывания звука
+        function playSound(soundKey) {
+            const fileName = soundMap[soundKey];
+            if (!fileName) {
+                console.warn(`Звук для "${soundKey}" не найден в soundMap`);
+                return;
             }
 
-            init() {
-                if (!this.audioCtx) {
-                    this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                }
-            }
-
-            playCoin() {
-                this.init();
-                const osc = this.audioCtx.createOscillator();
-                const gain = this.audioCtx.createGain();
-                osc.connect(gain);
-                gain.connect(this.audioCtx.destination);
-                
-                osc.frequency.setValueAtTime(1200, this.audioCtx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(800, this.audioCtx.currentTime + 0.1);
-                gain.gain.setValueAtTime(0.3, this.audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, this.audioCtx.currentTime + 0.1);
-                osc.start(this.audioCtx.currentTime);
-                osc.stop(this.audioCtx.currentTime + 0.1);
-            }
-
-            playPop() {
-                this.init();
-                const osc = this.audioCtx.createOscillator();
-                const gain = this.audioCtx.createGain();
-                osc.connect(gain);
-                gain.connect(this.audioCtx.destination);
-                
-                osc.type = 'square';
-                osc.frequency.setValueAtTime(800, this.audioCtx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(400, this.audioCtx.currentTime + 0.15);
-                gain.gain.setValueAtTime(0.2, this.audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, this.audioCtx.currentTime + 0.15);
-                osc.start(this.audioCtx.currentTime);
-                osc.stop(this.audioCtx.currentTime + 0.15);
-            }
-
-            playAnimal() {
-                this.init();
-                const osc = this.audioCtx.createOscillator();
-                const gain = this.audioCtx.createGain();
-                osc.connect(gain);
-                gain.connect(this.audioCtx.destination);
-                
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(600, this.audioCtx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(900, this.audioCtx.currentTime + 0.1);
-                gain.gain.setValueAtTime(0.2, this.audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, this.audioCtx.currentTime + 0.15);
-                osc.start(this.audioCtx.currentTime);
-                osc.stop(this.audioCtx.currentTime + 0.15);
-            }
-
-            playSurprise() {
-                this.init();
-                const notes = [523, 659, 784, 1047];
-                notes.forEach((freq, i) => {
-                    const osc = this.audioCtx.createOscillator();
-                    const gain = this.audioCtx.createGain();
-                    osc.connect(gain);
-                    gain.connect(this.audioCtx.destination);
-                    
-                    osc.frequency.setValueAtTime(freq, this.audioCtx.currentTime + i * 0.15);
-                    gain.gain.setValueAtTime(0.15, this.audioCtx.currentTime + i * 0.15);
-                    gain.gain.exponentialRampToValueAtTime(0.001, this.audioCtx.currentTime + i * 0.15 + 0.2);
-                    osc.start(this.audioCtx.currentTime + i * 0.15);
-                    osc.stop(this.audioCtx.currentTime + i * 0.15 + 0.2);
-                });
-            }
+            const audio = new Audio(`audio/${fileName}`);
+            audio.play().catch(error => {
+                // Если звук не загрузился (например, нет файла)
+                console.error('Ошибка воспроизведения:', error);
+                alert(`Звук "${fileName}" не найден в папке audio!`);
+            });
         }
 
-        const sound = new SoundGenerator();
+        // ----- Обработчики для всех элементов с data-sound -----
+        // 1. Монетка (отдельно, т.к. у неё ещё счётчик)
+        const coinElement = document.querySelector('.coin');
+        if (coinElement) {
+            coinElement.addEventListener('click', function(event) {
+                // Не даём клику всплыть наверх, чтобы не сработало дважды
+                event.stopPropagation();
+                // Проигрываем звук
+                const soundKey = this.dataset.sound;
+                playSound(soundKey);
 
-        // === КОНФЕТТИ ===
-        function createConfetti(count = 80) {
-            const container = document.getElementById('confettiContainer');
-            const colors = ['#FF6B6B', '#FFD93D', '#6BCB77', '#4D96FF', '#FF6BD6', '#FF9F43', '#A29BFE', '#FD79A8'];
-            
-            for (let i = 0; i < count; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.width = Math.random() * 10 + 6 + 'px';
-                confetti.style.height = Math.random() * 10 + 6 + 'px';
-                confetti.style.animationDuration = Math.random() * 2 + 2 + 's';
-                confetti.style.animationDelay = Math.random() * 2 + 's';
-                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-                container.appendChild(confetti);
-                
-                setTimeout(() => confetti.remove(), 5000);
-            }
+                // Увеличиваем счётчик (логика с монетками)
+                const countSpan = document.getElementById('coinCount');
+                let currentCount = parseInt(countSpan.textContent, 10);
+                countSpan.textContent = currentCount + 1;
+            });
         }
 
-        // Запускаем конфетти при загрузке
-        window.addEventListener('load', () => {
-            createConfetti(120);
-            // И каждые 5 секунд добавляем новые
-            setInterval(() => createConfetti(30), 5000);
-        });
-
-        // === ВСПЫШКИ ПРИ КЛИКЕ ===
-        function createBurst(x, y) {
-            const emojis = ['🎉', '✨', '⭐', '🌟', '🎊', '💫', '🎈', '🎁'];
-            for (let i = 0; i < 15; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'burst-particle';
-                particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                particle.style.left = x + 'px';
-                particle.style.top = y + 'px';
-                
-                const angle = Math.random() * 2 * Math.PI;
-                const distance = Math.random() * 150 + 50;
-                particle.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
-                particle.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
-                particle.style.fontSize = Math.random() * 2 + 1.5 + 'em';
-                
-                document.body.appendChild(particle);
-                setTimeout(() => particle.remove(), 1000);
-            }
-        }
-
-        // Клик по странице = вспышка
-        document.addEventListener('click', (e) => {
-            createBurst(e.clientX, e.clientY);
-            sound.playPop();
-        });
-
-        // === МОНЕТКА ===
-        let coinCount = 0;
-        const coinElement = document.getElementById('coin');
-        const coinCountElement = document.getElementById('coinCount');
-
-        coinElement.addEventListener('click', (e) => {
-            e.stopPropagation();
-            coinCount++;
-            coinCountElement.textContent = coinCount;
-            coinCountElement.classList.remove('pop');
-            void coinCountElement.offsetWidth; // рефлоу для перезапуска анимации
-            coinCountElement.classList.add('pop');
-            
-            sound.playCoin();
-            
-            // Маленькая вспышка у монетки
-            const rect = coinElement.getBoundingClientRect();
-            createBurst(
-                rect.left + rect.width / 2,
-                rect.top + rect.height / 2
-            );
-        });
-
-        // === ЖИВОТНЫЕ ===
-        document.querySelectorAll('.animal').forEach(animal => {
-            animal.addEventListener('click', (e) => {
-                e.stopPropagation();
-                sound.playAnimal();
-                
-                const tooltip = animal.querySelector('.animal-tooltip');
-                if (tooltip) {
-                    tooltip.style.opacity = '1';
-                    setTimeout(() => {
-                        tooltip.style.opacity = '0';
-                    }, 1500);
-                }
+        // 2. Все элементы в сетке эмодзи
+        const emojiItems = document.querySelectorAll('.emoji-item');
+        emojiItems.forEach(item => {
+            item.addEventListener('click', function(event) {
+                event.stopPropagation();
+                const soundKey = this.dataset.sound;
+                playSound(soundKey);
             });
         });
 
-        // === СЮРПРИЗ ===
-        const surpriseBtn = document.getElementById('surpriseBtn');
-        const surpriseMessage = document.getElementById('surpriseMessage');
-
-        surpriseBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            
-            sound.playSurprise();
-            surpriseMessage.classList.toggle('show');
-            
-            // Конфетти и вспышки
-            createConfetti(50);
-            for (let i = 0; i < 5; i++) {
-                setTimeout(() => {
-                    createBurst(
-                        Math.random() * window.innerWidth,
-                        Math.random() * window.innerHeight
-                    );
-                }, i * 200);
-            }
-            
-            // Меняем текст кнопки
-            if (surpriseMessage.classList.contains('show')) {
-                surpriseBtn.textContent = '🔮 Спрятать сюрприз';
-            } else {
-                surpriseBtn.textContent = '🎁 СЮРПРИЗ!';
+        // 3. Для всех остальных элементов, которые могут иметь data-sound (на будущее)
+        document.querySelectorAll('[data-sound]').forEach(el => {
+            // Чтобы не повесить обработчик дважды на уже обработанные элементы
+            if (!el.classList.contains('coin') && !el.classList.contains('emoji-item')) {
+                el.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    playSound(this.dataset.sound);
+                });
             }
         });
 
-        // === АУДИО КНОПКА ===
-        let audioEnabled = true;
-        const audioBtn = document.getElementById('audioBtn');
-
-        audioBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            audioEnabled = !audioEnabled;
-            audioBtn.textContent = audioEnabled ? '🔊 Вкл' : '🔇 Выкл';
-            
-            if (audioEnabled) {
-                sound.init();
-            }
-        });
-
-        // === ПЕРВОНАЧАЛЬНАЯ ИНИЦИАЛИЗАЦИЯ ЗВУКА ===
-        // Нужно для автозапуска звука (требуется взаимодействие пользователя)
-        document.addEventListener('click', () => {
-            sound.init();
-        }, { once: true });
-
-        console.log('🎂 С ДНЁМ РОЖДЕНИЯ, МАЛЕНЬКИЙ БРАТ! 🎉');
+        // Небольшая подсказка в консоль, что всё работает
+        console.log('🎵 Звуки готовы! Добавьте файлы в папку audio:', Object.values(soundMap));
     </script>
 </body>
 </html>
