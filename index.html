@@ -2,162 +2,762 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎂 С ДНЁМ РОЖДЕНИЯ! 🎂</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>С днём рождения, брат!</title>
     <style>
-        /* Стили чтобы было красиво (можно оставить свои) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #fff0f5;
-            padding: 20px;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 30px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        .emoji-grid {
+            background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 50%, #ffd3b4 100%);
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI', sans-serif;
+            min-height: 100vh;
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
-            font-size: 3rem;
-            margin: 20px 0;
-            cursor: pointer;
+            align-items: center;
+            padding: 12px;
+            margin: 0;
+            touch-action: manipulation;
+            overflow-x: hidden;
         }
-        .emoji-item {
-            transition: transform 0.2s;
-            padding: 10px;
-            border-radius: 20px;
-            background: #f8f8ff;
-            min-width: 80px;
-        }
-        .emoji-item:active {
-            transform: scale(0.8);
-        }
-        .coin {
-            font-size: 4rem;
-            background: gold;
-            border-radius: 50%;
-            padding: 15px;
-            display: inline-block;
-            margin: 10px;
-            cursor: pointer;
+
+        .card {
+            max-width: 480px;
+            width: 100%;
+            background: rgba(255, 248, 240, 0.92);
+            backdrop-filter: blur(10px);
+            border-radius: 40px 15px 40px 15px;
+            box-shadow: 0 15px 40px rgba(120, 80, 60, 0.2);
+            padding: 25px 18px 30px;
+            text-align: center;
+            border: 3px solid rgba(255, 255, 255, 0.7);
             transition: 0.3s;
+            position: relative;
+            z-index: 1;
         }
-        .coin:active {
-            transform: scale(0.7);
-        }
+
         h1 {
-            color: #ff6b6b;
+            font-size: 2.4rem;
+            color: #5a3e2b;
+            text-shadow: 2px 2px 0 #f7dc6f, 0 0 20px rgba(247, 220, 111, 0.2);
+            letter-spacing: 0.5px;
+            word-break: break-word;
+            font-weight: 900;
+            cursor: pointer;
+            transition: transform 0.2s;
+            user-select: none;
+            padding: 5px 0;
+            position: relative;
+            z-index: 1;
         }
-        .subtitle {
-            font-size: 1.5rem;
-            color: #4ecdc4;
+
+        h1:active {
+            transform: scale(0.95);
+        }
+
+        .subhead {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #6b4c3b;
+            background: #fae5d3;
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 40px;
+            margin: 5px 0 8px;
+            box-shadow: 0 3px 0 #d4a373;
+            border: 2px solid #f0d5b0;
+            cursor: pointer;
+            transition: transform 0.2s;
+            user-select: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subhead:active {
+            transform: scale(0.95);
+        }
+
+        .emoji-big {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin: 3px 0 8px;
+            filter: drop-shadow(0 6px 10px rgba(0,0,0,0.06));
+            cursor: pointer;
+            transition: transform 0.2s;
+            user-select: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .emoji-big:active {
+            transform: scale(0.9);
+        }
+
+        .message {
+            font-size: 1.4rem;
+            background: #fef9f0;
+            padding: 16px 18px;
+            border-radius: 40px 12px 40px 12px;
+            border: 3px solid #f0d5b0;
+            color: #4a3525;
+            margin: 10px 0 15px;
+            box-shadow: inset 0 2px 8px rgba(180, 130, 90, 0.06);
+            line-height: 1.4;
+            cursor: pointer;
+            transition: transform 0.2s;
+            user-select: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .message:active {
+            transform: scale(0.97);
+        }
+
+        .message span {
+            background: #f9caa7;
+            padding: 0 12px;
+            border-radius: 30px;
+            font-size: 2.2rem;
+            display: inline-block;
+            color: #5a2d1a;
+            box-shadow: 0 3px 0 #c4956a;
+        }
+
+        /* ===== КЛИКЕР ===== */
+        .clicker-section {
+            background: linear-gradient(135deg, #f8e8d0, #f5e0c0);
+            border-radius: 30px 10px 30px 10px;
+            padding: 15px 12px;
+            margin: 12px 0 15px;
+            border: 3px solid #eddccb;
+            position: relative;
+            z-index: 1;
+        }
+
+        .clicker-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #5a4030;
+            margin-bottom: 10px;
+        }
+
+        .clicker-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .clicker-button {
+            background: linear-gradient(145deg, #ffd93d, #f6b93b);
+            border: none;
+            border-radius: 60px;
+            padding: 16px 30px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2d1f14;
+            box-shadow: 0 6px 0 #d4a017, 0 8px 20px rgba(246, 185, 59, 0.3);
+            cursor: pointer;
+            transition: all 0.08s ease;
+            touch-action: manipulation;
+            user-select: none;
+            min-width: 130px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .clicker-button:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #d4a017;
+        }
+
+        .clicker-button .icon {
+            font-size: 2.2rem;
+            line-height: 1;
+        }
+
+        .clicker-counter {
+            font-size: 2.4rem;
+            font-weight: bold;
+            color: #2d1f14;
+            background: white;
+            padding: 8px 28px;
+            border-radius: 50px;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.06);
+            border: 2px solid #dccfc4;
+            min-width: 80px;
+            transition: transform 0.15s;
+        }
+
+        .clicker-counter.pop {
+            animation: pop 0.2s ease;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        .btn-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 15px 0 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 50px;
+            padding: 14px 12px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #3d2b1a;
+            box-shadow: 0 4px 0 #c9b09b, 0 4px 12px rgba(0,0,0,0.06);
+            cursor: pointer;
+            transition: all 0.08s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            border: 2px solid rgba(255,255,255,0.5);
+            background: #f5e6d3;
+            user-select: none;
+            touch-action: manipulation;
+            min-height: 56px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #b89f8a;
+        }
+
+        .btn-green {
+            background: #c7e9c0;
+            box-shadow: 0 4px 0 #9dbd94;
+        }
+        .btn-green:active {
+            box-shadow: 0 2px 0 #9dbd94;
+        }
+
+        .btn-blue {
+            background: #c5dff8;
+            box-shadow: 0 4px 0 #9bb5d4;
+        }
+        .btn-blue:active {
+            box-shadow: 0 2px 0 #9bb5d4;
+        }
+
+        .btn-orange {
+            background: #fae1b0;
+            box-shadow: 0 4px 0 #d4b588;
+        }
+        .btn-orange:active {
+            box-shadow: 0 2px 0 #d4b588;
+        }
+
+        .btn-pink {
+            background: #f8d5d5;
+            box-shadow: 0 4px 0 #d4afaf;
+        }
+        .btn-pink:active {
+            box-shadow: 0 2px 0 #d4afaf;
+        }
+
+        .game-area {
+            background: #fcf6ed;
+            border-radius: 40px 12px 40px 12px;
+            padding: 16px 12px;
+            margin: 12px 0 10px;
+            border: 3px solid #eddccb;
+            box-shadow: inset 0 2px 10px rgba(160, 120, 90, 0.04);
+            position: relative;
+            z-index: 1;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 8px 0;
+        }
+
+        .animal-card {
+            background: #fffcf5;
+            border-radius: 30px 8px 30px 8px;
+            padding: 12px 6px;
+            font-size: 2.4rem;
+            box-shadow: 0 4px 0 #dccfc4, 0 6px 15px rgba(0,0,0,0.03);
+            border: 2px solid #ede0d2;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            user-select: none;
+            touch-action: manipulation;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 65px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .animal-card:active {
+            transform: scale(0.92);
+            box-shadow: 0 2px 0 #cbbdb0;
+        }
+
+        .animal-card.clicked {
+            background: #fae5c3;
+            border-color: #dbb58b;
+            box-shadow: 0 0 0 3px #eed3b0, 0 3px 0 #c9af8d;
+            transform: scale(1.02);
+        }
+
+        .footer {
+            margin-top: 18px;
+            font-size: 1.3rem;
+            color: #5a4030;
+            background: #f5e6d3;
+            padding: 12px 16px;
+            border-radius: 40px;
+            border: 2px solid #eddccb;
+            box-shadow: 0 3px 0 #d4bfae;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s;
+            user-select: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer:active {
+            transform: scale(0.97);
+        }
+
+        /* ===== КОНФЕТТИ ===== */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            animation: confettiFall linear forwards;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .card {
+                padding: 16px 12px 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .subhead {
+                font-size: 1.0rem;
+                padding: 4px 14px;
+            }
+            
+            .emoji-big {
+                font-size: 2.8rem;
+            }
+            
+            .message {
+                font-size: 1.1rem;
+                padding: 12px 14px;
+            }
+            
+            .message span {
+                font-size: 1.8rem;
+                padding: 0 8px;
+            }
+            
+            .btn {
+                font-size: 1.0rem;
+                padding: 10px 8px;
+                min-height: 48px;
+            }
+            
+            .animal-card {
+                font-size: 1.8rem;
+                padding: 8px 4px;
+                min-height: 55px;
+            }
+            
+            .footer {
+                font-size: 1.0rem;
+                padding: 10px 12px;
+            }
+
+            .clicker-button {
+                font-size: 1.5rem;
+                padding: 12px 18px;
+                min-width: 100px;
+            }
+
+            .clicker-counter {
+                font-size: 2rem;
+                padding: 6px 18px;
+                min-width: 60px;
+            }
+
+            .clicker-title {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .game-grid {
+                gap: 6px;
+            }
+            
+            .animal-card {
+                font-size: 1.5rem;
+                min-height: 45px;
+            }
+            
+            .btn-group {
+                gap: 5px;
+            }
+            
+            .btn {
+                font-size: 0.9rem;
+                padding: 8px 6px;
+                min-height: 42px;
+            }
+
+            .clicker-button {
+                font-size: 1.2rem;
+                padding: 10px 14px;
+                min-width: 80px;
+            }
+
+            .clicker-counter {
+                font-size: 1.6rem;
+                padding: 4px 14px;
+                min-width: 50px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .card {
+                max-width: 550px;
+                padding: 35px 30px 40px;
+            }
+            
+            h1 {
+                font-size: 3.2rem;
+            }
+            
+            .subhead {
+                font-size: 1.6rem;
+                padding: 8px 28px;
+            }
+            
+            .emoji-big {
+                font-size: 4.5rem;
+            }
+            
+            .message {
+                font-size: 1.8rem;
+                padding: 20px 25px;
+            }
+            
+            .message span {
+                font-size: 2.8rem;
+                padding: 0 18px;
+            }
+            
+            .btn {
+                font-size: 1.4rem;
+                padding: 14px 20px;
+                min-height: 60px;
+            }
+            
+            .animal-card {
+                font-size: 3rem;
+                padding: 14px 10px;
+                min-height: 80px;
+            }
+            
+            .footer {
+                font-size: 1.6rem;
+                padding: 14px 20px;
+            }
+
+            .clicker-button {
+                font-size: 2.2rem;
+                padding: 18px 35px;
+                min-width: 160px;
+            }
+
+            .clicker-counter {
+                font-size: 3rem;
+                padding: 10px 35px;
+            }
+
+            .clicker-title {
+                font-size: 1.4rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🎂 С ДНЁМ РОЖДЕНИЯ! 🎂</h1>
-        <p class="subtitle">⭐ Моему любимому брату! ⭐</p>
-        <p>🎈🎁🌟</p>
-        <p><strong>Тебе уже 5 лет!</strong></p>
-        <p>Ты самый сильный и умный! 🦸♂️</p>
-        
-        <!-- Монетка -->
-        <div class="coin" data-sound="coin">💰 <span id="coinCount">0</span></div>
 
-        <!-- Все эмодзи -->
-        <div class="emoji-grid" id="emojiContainer">
-            <div class="emoji-item" data-sound="dog">🐶</div>
-            <div class="emoji-item" data-sound="cat">🐱</div>
-            <div class="emoji-item" data-sound="panda">🐼</div>
-            <div class="emoji-item" data-sound="koala">🐨</div>
-            <div class="emoji-item" data-sound="fox">🦊</div>
-            <div class="emoji-item" data-sound="frog">🐸</div>
-            <div class="emoji-item" data-sound="penguin">🐧</div>
-            <div class="emoji-item" data-sound="unicorn">🦄</div>
-        </div>
-        
-        <p style="margin-top: 30px; font-size: 0.8rem; color: #aaa;">Нажми на любой эмодзи или монетку — услышишь звук!</p>
+<!-- Контейнер для конфетти -->
+<div class="confetti-container" id="confettiContainer"></div>
+
+<div class="card" id="mainCard">
+    <h1 id="titleBirthday">🎂 С ДНЁМ РОЖДЕНИЯ! 🎂</h1>
+    <div class="subhead" id="subheadBrother">⭐ Моему любимому брату! ⭐</div>
+    <div class="emoji-big" id="emojiBig">🎈🎁🌟</div>
+
+    <div class="message" id="messageAge">
+        Тебе уже <span>5</span> лет! <br>
+        Ты самый сильный и умный! 🦸‍♂️
     </div>
 
-    <script>
-        // 📢 Список звуков: ключ (data-sound) -> имя файла в папке audio
-        const soundMap = {
-            'coin': 'coin.mp3',       // Звук монетки
-            'dog': 'dog.mp3',         // Собака
-            'cat': 'cat.mp3',         // Кошка
-            'panda': 'panda.mp3',     // Панда
-            'koala': 'koala.mp3',     // Коала
-            'fox': 'fox.mp3',         // Лиса
-            'frog': 'frog.mp3',       // Лягушка
-            'penguin': 'penguin.mp3', // Пингвин
-            'unicorn': 'unicorn.mp3'  // Единорог
+    <!-- ===== КЛИКЕР ===== -->
+    <div class="clicker-section">
+        <div class="clicker-title">💰 Нажимай на монетку!</div>
+        <div class="clicker-display">
+            <button class="clicker-button" id="clickerButton">
+                <span class="icon">💎</span> ЖМИ!
+            </button>
+            <div class="clicker-counter" id="clickerCounter">0</div>
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <button class="btn" id="btnClap">👏 Хлопай</button>
+        <button class="btn btn-green" id="btnJump">🦘 Прыгай</button>
+        <button class="btn btn-blue" id="btnStar">⭐ Звезда</button>
+        <button class="btn btn-pink" id="btnDino">🦕 Динозавр</button>
+    </div>
+
+    <div class="game-area">
+        <div class="game-grid" id="animalGrid">
+            <div class="animal-card" data-animal="🐶">🐶</div>
+            <div class="animal-card" data-animal="🐱">🐱</div>
+            <div class="animal-card" data-animal="🐼">🐼</div>
+            <div class="animal-card" data-animal="🐨">🐨</div>
+            <div class="animal-card" data-animal="🦊">🦊</div>
+            <div class="animal-card" data-animal="🐸">🐸</div>
+            <div class="animal-card" data-animal="🐧">🐧</div>
+            <div class="animal-card" data-animal="🦄">🦄</div>
+        </div>
+        <div class="game-hint" id="gameFeedback"></div>
+    </div>
+
+    <div class="footer" id="footerLove">
+        ❤️ Твой старший брат ❤️
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ====== КОНФЕТТИ ======
+        const confettiContainer = document.getElementById('confettiContainer');
+        const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#54a0ff', '#5f27cd', '#1dd1a1', '#f368e0', '#ff9f43', '#00d2d3'];
+
+        function createConfetti(count = 80) {
+            for (let i = 0; i < count; i++) {
+                const piece = document.createElement('div');
+                piece.className = 'confetti-piece';
+                const size = Math.random() * 10 + 6;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const left = Math.random() * 100;
+                const duration = Math.random() * 2 + 2;
+                const delay = Math.random() * 1.5;
+                const shapes = ['50%', '0'];
+                const borderRadius = shapes[Math.floor(Math.random() * shapes.length)];
+                
+                piece.style.cssText = `
+                    left: ${left}%;
+                    width: ${size}px;
+                    height: ${size * 0.6}px;
+                    background: ${color};
+                    border-radius: ${borderRadius};
+                    animation-duration: ${duration}s;
+                    animation-delay: ${delay}s;
+                `;
+                confettiContainer.appendChild(piece);
+            }
+            
+            setTimeout(() => {
+                confettiContainer.innerHTML = '';
+            }, 4000);
+        }
+
+        // ====== ФУНКЦИЯ ДЛЯ ВОСПРОИЗВЕДЕНИЯ ЗВУКА ======
+        function playSound(audioFileName) {
+            const audioPath = 'audio/' + audioFileName;
+            const audio = new Audio();
+            audio.src = audioPath;
+            
+            audio.play().catch(error => {
+                console.log('Ошибка воспроизведения:', audioFileName, error);
+            });
+        }
+
+        // ====== СПИСОК АУДИОФАЙЛОВ ======
+        const audioFiles = {
+            'Happy birthday': 'Happy birthday.mp3',
+            'To my beloved brother': 'To my beloved brother.mp3',
+            'You are already 5 years old': 'You are already 5 years old.mp3',
+            'Clap clap well done': 'Clap clap well done.mp3',
+            'prag skok': 'prag skok.mp3',
+            "You're a superstar": "You're a superstar.mp3",
+            'Dinovar is coming': 'Dinovar is coming.mp3',
+            'coin': 'coin.mp3',
+            'dog': 'dog.mp3',
+            'cat': 'cat.mp3',
+            'panda': 'panda.mp3',
+            'coala': 'coala.mp3',
+            'fox': 'fox.mp3',
+            'frog': 'frog.mp3',
+            'pinguin': 'pinguin.mp3',
+            'unicorn': 'unicorn.mp3'
         };
 
-        // Функция для проигрывания звука
-        function playSound(soundKey) {
-            const fileName = soundMap[soundKey];
-            if (!fileName) {
-                console.warn(`Звук для "${soundKey}" не найден в soundMap`);
-                return;
-            }
+        // ====== КЛИКЕР ======
+        let clickCount = 0;
+        const clickerButton = document.getElementById('clickerButton');
+        const clickerCounter = document.getElementById('clickerCounter');
 
-            const audio = new Audio(`audio/${fileName}`);
-            audio.play().catch(error => {
-                // Если звук не загрузился (например, нет файла)
-                console.error('Ошибка воспроизведения:', error);
-                alert(`Звук "${fileName}" не найден в папке audio!`);
-            });
-        }
+        clickerButton.addEventListener('click', function() {
+            clickCount++;
+            clickerCounter.textContent = clickCount;
+            
+            clickerCounter.classList.remove('pop');
+            void clickerCounter.offsetWidth;
+            clickerCounter.classList.add('pop');
+            
+            playSound(audioFiles['coin']);
+            createConfetti(60);
+            
+            this.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+        });
 
-        // ----- Обработчики для всех элементов с data-sound -----
-        // 1. Монетка (отдельно, т.к. у неё ещё счётчик)
-        const coinElement = document.querySelector('.coin');
-        if (coinElement) {
-            coinElement.addEventListener('click', function(event) {
-                // Не даём клику всплыть наверх, чтобы не сработало дважды
-                event.stopPropagation();
-                // Проигрываем звук
-                const soundKey = this.dataset.sound;
-                playSound(soundKey);
+        // ====== НАСТРАИВАЕМ КЛИКИ ======
 
-                // Увеличиваем счётчик (логика с монетками)
-                const countSpan = document.getElementById('coinCount');
-                let currentCount = parseInt(countSpan.textContent, 10);
-                countSpan.textContent = currentCount + 1;
-            });
-        }
+        document.getElementById('titleBirthday').addEventListener('click', function() {
+            playSound(audioFiles['Happy birthday']);
+            createConfetti(50);
+        });
 
-        // 2. Все элементы в сетке эмодзи
-        const emojiItems = document.querySelectorAll('.emoji-item');
-        emojiItems.forEach(item => {
-            item.addEventListener('click', function(event) {
-                event.stopPropagation();
-                const soundKey = this.dataset.sound;
-                playSound(soundKey);
+        document.getElementById('subheadBrother').addEventListener('click', function() {
+            playSound(audioFiles['To my beloved brother']);
+        });
+
+        document.getElementById('emojiBig').addEventListener('click', function() {
+            playSound(audioFiles['Happy birthday']);
+            createConfetti(40);
+        });
+
+        document.getElementById('messageAge').addEventListener('click', function() {
+            playSound(audioFiles['You are already 5 years old']);
+        });
+
+        document.getElementById('btnClap').addEventListener('click', function() {
+            playSound(audioFiles['Clap clap well done']);
+        });
+
+        document.getElementById('btnJump').addEventListener('click', function() {
+            playSound(audioFiles['prag skok']);
+        });
+
+        document.getElementById('btnStar').addEventListener('click', function() {
+            playSound(audioFiles["You're a superstar"]);
+        });
+
+        document.getElementById('btnDino').addEventListener('click', function() {
+            playSound(audioFiles['Dinovar is coming']);
+        });
+
+        const animalData = {
+            '🐶': { audio: 'dog' },
+            '🐱': { audio: 'cat' },
+            '🐼': { audio: 'panda' },
+            '🐨': { audio: 'coala' },
+            '🦊': { audio: 'fox' },
+            '🐸': { audio: 'frog' },
+            '🐧': { audio: 'pinguin' },
+            '🦄': { audio: 'unicorn' }
+        };
+
+        const animalCards = document.querySelectorAll('.animal-card');
+
+        animalCards.forEach(card => {
+            card.addEventListener('click', function() {
+                animalCards.forEach(c => c.classList.remove('clicked'));
+                this.classList.add('clicked');
+
+                const animalEmoji = this.dataset.animal || this.textContent.trim();
+                const data = animalData[animalEmoji];
+                
+                if (data) {
+                    const audioFile = audioFiles[data.audio];
+                    if (audioFile) {
+                        playSound(audioFile);
+                    }
+                }
+
+                this.style.transform = 'scale(1.1)';
+                setTimeout(() => { this.style.transform = ''; }, 200);
             });
         });
 
-        // 3. Для всех остальных элементов, которые могут иметь data-sound (на будущее)
-        document.querySelectorAll('[data-sound]').forEach(el => {
-            // Чтобы не повесить обработчик дважды на уже обработанные элементы
-            if (!el.classList.contains('coin') && !el.classList.contains('emoji-item')) {
-                el.addEventListener('click', function(event) {
-                    event.stopPropagation();
-                    playSound(this.dataset.sound);
-                });
-            }
+        document.getElementById('footerLove').addEventListener('click', function() {
+            playSound(audioFiles['To my beloved brother']);
         });
 
-        // Небольшая подсказка в консоль, что всё работает
-        console.log('🎵 Звуки готовы! Добавьте файлы в папку audio:', Object.values(soundMap));
-    </script>
+        window.addEventListener('load', function() {
+            console.log('🎉 Страница загружена!');
+            console.log('💰 Нажми на монетку!');
+        });
+
+    })();
+</script>
+
 </body>
 </html>
